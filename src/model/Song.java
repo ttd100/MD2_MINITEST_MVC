@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Song {
@@ -9,15 +10,10 @@ public class Song {
     private int like;
     private List<Singer> singerList;
 
-    public Song() {
-    }
-
-    public Song(int id, String name, int listen, int like, List<Singer> singerList) {
+    public Song(int id, String name) {
         this.id = id;
         this.name = name;
-        this.listen = listen;
-        this.like = like;
-        this.singerList = singerList;
+        singerList = new ArrayList<>();
     }
 
     public int getId() {

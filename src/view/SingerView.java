@@ -2,13 +2,55 @@ package view;
 
 import controller.SingerController;
 import model.Singer;
+import model.Song;
 
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class SingerView {
-
-    Scanner sc = new Scanner(System.in);
+    private final Scanner sc = new Scanner(System.in);
+    
     private final SingerController singerController = new SingerController();
+
+//    Scanner sc = new Scanner(System.in);
+    public void menu(){
+        System.out.println("MENU");
+        System.out.println("1. Show List Singer");
+        System.out.println("2. Create Singer");
+        System.out.println("3. Update Singer");
+        System.out.println("4. Detail Singer");
+        System.out.println("5. Delete Singer");
+        System.out.println("6. Sort Singer List");
+        System.out.println("7. Exit");
+        int choice = Integer.parseInt(sc.nextLine());
+        switch (choice) {
+            case 1:
+                this.showListSinger();
+                break;
+            case 2:
+                this.createSinger();
+                break;
+            case 3:
+                this.updateSinger();
+                break;
+            case 4:
+                this.showDetailSinger();
+                break;
+            case 5:
+                this.deleteSinger();
+                break;
+            case 6:
+                this.sortSingerList();
+                break;
+            case 7:
+                new Main();
+                break;
+            default:
+                System.out.println("Invalid choice");
+        }
+        new SingerView().menu();
+    }
+
 
     public void showListSinger() {
         for (Singer singer : singerController.getSingers()) {
